@@ -14,7 +14,7 @@ test_format() {
     echo "FORMAT TEST"
     echo $sep
     cd "$SRC_DIR"
-    ./scripts/format_xml.sh -c
+    ./scripts/format_xml.sh -c -d ./message_definitions/
     echo PASS
 }
 
