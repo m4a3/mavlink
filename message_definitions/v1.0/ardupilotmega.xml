@@ -1870,5 +1870,10 @@
       <field type="uint8_t" name="target_system">Fcu target id.</field>
       <field type="uint8_t" name="target_component">Fcu component id, leave 0 by default.</field>
     </message>
+    <message id="12001" name="LOG_REQUEST_LAST">
+      <description>Request the last generated log. If there are no log files available this request shall be answered with one LOG_ENTRY message with id = 0 and num_logs = 0.</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
   </messages>
 </mavlink>
