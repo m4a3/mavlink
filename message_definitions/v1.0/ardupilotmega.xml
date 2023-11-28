@@ -122,7 +122,7 @@
       </entry>
       <entry value="42004" name="MAV_CMD_FIXED_MAG_CAL" hasLocation="false" isDestination="false">
         <description>Magnetometer calibration based on fixed position
-        in earth field given by inclination, declination and intensity.</description>
+          in earth field given by inclination, declination and intensity.</description>
         <param index="1" label="Declination" units="deg">Magnetic declination.</param>
         <param index="2" label="Inclination" units="deg">Magnetic inclination.</param>
         <param index="3" label="Intensity" units="mgauss">Magnetic intensity.</param>
@@ -331,6 +331,16 @@
         <param index="5">Empty</param>
         <param index="6">Empty</param>
         <param index="7">Empty</param>
+      </entry>
+      <entry value="43500" name="MAV_CMD_GET_CCDL_STATUS" hasLocation="false" isDestination="false">
+        <description>The request the current stats of the ccdl network on a target.</description>
+        <param index="1">Empty.</param>
+        <param index="2">Empty.</param>
+        <param index="3">Empty.</param>
+        <param index="4">Empty.</param>
+        <param index="5">Empty.</param>
+        <param index="6">Empty.</param>
+        <param index="7">Empty.</param>
       </entry>
     </enum>
     <enum name="SCRIPTING_CMD">
@@ -1874,6 +1884,19 @@
       <description>Request the last generated log. If there are no log files available this request shall be answered with one LOG_ENTRY message with id = 0 and num_logs = 0.</description>
       <field type="uint8_t" name="target_system">System ID</field>
       <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
+    <message id="12002" name="CCDL_STATUS">
+      <description>The send the current stats of the ccdl network on a target.</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
+      <field type="uint8_t[2]" name="mavlink_channel">mavlink channel ID.</field>
+      <field type="uint8_t[2]" name="serial_port">serial port ID.</field>
+      <field type="uint8_t[2]" name="primary_target">primary target id.</field>
+      <field type="uint8_t[2]" name="primary_working">primary working.</field>
+      <field type="uint32_t[2]" name="primary_last_hb_ms" units="ms">primary last hb ms.</field>
+      <field type="uint8_t[2]" name="backup_working">backup working.</field>
+      <field type="uint32_t[2]" name="backup_last_hb_ms" units="ms">backup last hb ms.</field>
+      <field type="uint8_t" name="target_system">Fcu target id.</field>
+      <field type="uint8_t" name="target_component">Fcu component id, leave 0 by default.</field>
     </message>
   </messages>
 </mavlink>
