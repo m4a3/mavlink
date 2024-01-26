@@ -1161,6 +1161,24 @@
       <entry value="2" name="OSD_PARAM_INVALID_PARAMETER_INDEX"/>
       <entry value="3" name="OSD_PARAM_INVALID_PARAMETER"/>
     </enum>
+    <enum name="CHUTE_RELEASE_REASON" bitmask="true">
+      <description>Reasons for chute release.</description>
+      <entry value="1" name="SINK_RATE">
+        <description>Sink rate maintained over the speed limit.</description>
+      </entry>
+      <entry value="2" name="ACCEL_FALLING">
+        <description>Detected aircraft falling.</description>
+      </entry>
+      <entry value="4" name="CONTROL_LOSS">
+        <description>Loss of control.</description>
+      </entry>
+      <entry value="8" name="MISSION_ITEM">
+        <description>Mission release.</description>
+      </entry>
+      <entry value="16" name="MANUAL">
+        <description>Manual release.</description>
+      </entry>
+    </enum>
   </enums>
   <messages>
     <message id="150" name="SENSOR_OFFSETS">
@@ -1898,6 +1916,17 @@
       <field type="uint32_t[2]" name="backup_last_hb_ms" units="ms">backup last hb ms.</field>
       <field type="uint8_t" name="target_system">Fcu target id.</field>
       <field type="uint8_t" name="target_component">Fcu component id, leave 0 by default.</field>
+    </message>
+    <message id="12003" name="MNA_CHUTE_STATUS">
+      <description>The send the current stats of the chute system on a target.</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
+      <field type="uint8_t" name="target_system">Target id.</field>
+      <field type="uint8_t" name="target_component">Component id, leave 0 by default.</field>
+      <field type="uint8_t" name="release_reason" enum="CHUTE_RELEASE_REASON" display="bitmask">Release reason.</field>
+      <field type="uint32_t" name="release_timer_ms" units="ms">Time in ms until the release.</field>
+      <field type="uint8_t" name="standby_state">Standby state (Enabled = True).</field>
+      <field type="int8_t" name="enabled">Enabled (Positive for enabled).</field>
+      <field type="uint8_t" name="release_initiated">Release initiated (0 for no, 1 for release or releasing).</field>
     </message>
   </messages>
 </mavlink>
