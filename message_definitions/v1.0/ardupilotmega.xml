@@ -342,6 +342,16 @@
         <param index="6">Empty.</param>
         <param index="7">Empty.</param>
       </entry>
+      <entry value="43501" name="MAV_CMD_MNA_SET_OVERRIDE_VOTE" hasLocation="false" isDestination="false">
+        <description>Allow to enable overriding the vote of the FCU.</description>
+        <param index="1" label="override" minValue="0" maxValue="1" increment="1">Enable the vote override.</param>
+        <param index="2" label="override_target" minValue="0" maxValue="255">Override target sysid.</param>
+        <param index="3">Empty.</param>
+        <param index="4">Empty.</param>
+        <param index="5">Empty.</param>
+        <param index="6">Empty.</param>
+        <param index="7">Empty.</param>
+      </entry>
     </enum>
     <enum name="SCRIPTING_CMD">
       <entry value="0" name="SCRIPTING_CMD_REPL_START">
@@ -1927,6 +1937,20 @@
       <field type="uint8_t" name="standby_state">Standby state (Enabled = True).</field>
       <field type="int8_t" name="enabled">Enabled (Positive for enabled).</field>
       <field type="uint8_t" name="release_initiated">Release initiated (0 for no, 1 for release or releasing).</field>
+    </message>
+    <message id="12004" name="MNA_STANDBY_STATUS">
+      <description>The standby status on a target.</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
+      <field type="uint8_t" name="target_system">Target id.</field>
+      <field type="uint8_t" name="target_component">Component id, leave 0 by default.</field>
+      <field type="uint8_t" name="standby_state">Standby state (Enabled = True).</field>
+    </message>
+    <message id="12005" name="MNA_VOTE_STATUS">
+      <description>The fcu vote status on a target.</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
+      <field type="uint8_t" name="target_system">Target id.</field>
+      <field type="uint8_t" name="target_component">Component id, leave 0 by default.</field>
+      <field type="uint8_t" name="fcu_vote">ID of the FCU voted.</field>
     </message>
   </messages>
 </mavlink>
