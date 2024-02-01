@@ -1173,19 +1173,19 @@
     </enum>
     <enum name="CHUTE_RELEASE_REASON" bitmask="true">
       <description>Reasons for chute release.</description>
-      <entry value="1" name="SINK_RATE">
+      <entry value="1" name="CHUTE_RELEASE_SINK_RATE">
         <description>Sink rate maintained over the speed limit.</description>
       </entry>
-      <entry value="2" name="ACCEL_FALLING">
+      <entry value="2" name="CHUTE_RELEASE_ACCEL_FALLING">
         <description>Detected aircraft falling.</description>
       </entry>
-      <entry value="4" name="CONTROL_LOSS">
+      <entry value="4" name="CHUTE_RELEASE_CONTROL_LOSS">
         <description>Loss of control.</description>
       </entry>
-      <entry value="8" name="MISSION_ITEM">
+      <entry value="8" name="CHUTE_RELEASE_MISSION_ITEM">
         <description>Mission release.</description>
       </entry>
-      <entry value="16" name="MANUAL">
+      <entry value="16" name="CHUTE_RELEASE_MANUAL">
         <description>Manual release.</description>
       </entry>
     </enum>
@@ -1906,6 +1906,7 @@
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
       <field type="uint32_t" name="seq">Sequence number.</field>
       <field type="uint8_t" name="type">Packet type : from primary (0) or from backup (1).</field>
+      <field type="uint8_t" name="backup_working">Notice if backup route for this ccdl is working.</field>
       <field type="uint8_t" name="target_system">Fcu target id.</field>
       <field type="uint8_t" name="target_component">Fcu component id, leave 0 by default.</field>
     </message>
