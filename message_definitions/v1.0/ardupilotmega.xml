@@ -352,6 +352,16 @@
         <param index="6">Empty.</param>
         <param index="7">Empty.</param>
       </entry>
+      <entry value="43502" name="MAV_CMD_MNA_SET_MOT_STOP" hasLocation="false" isDestination="false">
+        <description>Ability to stop the motors.</description>
+        <param index="1" label="enable" minValue="0" maxValue="1" increment="1">Enable the motor stop.</param>
+        <param index="2" label="stop" minValue="0" increment="1">Bitmask of motors to stop.</param>
+        <param index="3" label="timeout" units="ms" minValue="0">Timeout for the motor stop, after which the motors will be restarted.</param>
+        <param index="4">Empty.</param>
+        <param index="5">Empty.</param>
+        <param index="6">Empty.</param>
+        <param index="7">Empty.</param>
+      </entry>
     </enum>
     <enum name="SCRIPTING_CMD">
       <entry value="0" name="SCRIPTING_CMD_REPL_START">
