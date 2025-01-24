@@ -2817,6 +2817,9 @@
       <entry value="1" name="MAV_DO_REPOSITION_FLAGS_CHANGE_MODE">
         <description>The aircraft should immediately transition into guided. This should not be set for follow me applications</description>
       </entry>
+      <entry value="2" name="MAV_DO_REPOSITION_FLAGS_RELATIVE_YAW">
+        <description>The aircraft should set its yaw target relative to the current heading</description>
+      </entry>
     </enum>
     <!-- ESTIMATOR_STATUS_FLAGS - these values should be bit-and with the messages flags field to know if flag has been set -->
     <enum name="ESTIMATOR_STATUS_FLAGS" bitmask="true">
